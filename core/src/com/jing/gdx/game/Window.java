@@ -10,8 +10,13 @@ public class Window {
         pos_x = x;
         pos_y = y;
     }
-	public void FixWindow() {
-		state = true;
+	public boolean FixWindow() {
+		if (!state) {
+			state = true;
+			return true;
+		} else {
+			return false;
+		}
 	}
 	public void BrokeWindow() {
 		state = false;

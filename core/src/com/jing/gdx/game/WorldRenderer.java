@@ -51,9 +51,9 @@ public class WorldRenderer {
         font.draw(batch, "" + world.getScore(), 700, 60);
         batch.draw(playerImg, world.getPlayer().getX(), world.getPlayer().getY());
         batch.draw(bossImg,world.getBoss().pos_x,world.getBoss().pos_y);
-        batch.draw(brickImg,world.getBrick().pos_x,world.getBrick().pos_y);
         batch.end();
         world.getBrickRenderer().render();
+        world.getGameOver().render();
        
         count++;
     }

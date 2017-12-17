@@ -19,10 +19,14 @@ public class BrickRenderer {
 	public void addBrick(int x, int y) {
 		bricklist.add(new Brick(x,y, world));
 	}
+	public void update() {
+		for (int n=0; n<bricklist.size(); n++) {
+			bricklist.get(n).update();
+		}
+	}
 	public void render() {
 		batch.begin();
 		for (int n=0; n<bricklist.size(); n++) {
-			bricklist.get(n).update();
 			batch.draw(brickImg,bricklist.get(n).pos_x,bricklist.get(n).pos_y);
 		}
 		batch.end();

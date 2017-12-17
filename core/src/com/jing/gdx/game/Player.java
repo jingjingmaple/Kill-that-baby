@@ -27,7 +27,9 @@ public class Player {
 	}
 	
 	public void fixThis() {
-		map.windowList[row][col].state = true;
+		if (map.windowList[row][col].FixWindow()) {
+			world.increaseScore();
+		}
 	}
 	public void SetPosition(int r, int c) {
 		System.out.print(col+c);

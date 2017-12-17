@@ -11,6 +11,7 @@ public class World {
     private Map map;
     private Brick brick;
     private BrickRenderer brickRenderer;
+    private GameOver gameover;
     
     World(PacmanGame pacmanGame) {
     	maze = new Maze();
@@ -22,11 +23,10 @@ public class World {
         map = new Map();
         player = new Player(3,1,this);
         boss = new Boss(200,600,this);
-        brick = new Brick(200,600,this);
-        System.out.println(map.getBlock()[0][0][0]);
-        System.out.println(map.getBlock()[0][0][1]);
+
         
         brickRenderer = new BrickRenderer(pacmanGame.batch,this);
+        gameover = new GameOver(pacmanGame.batch);
     }
  
     Pacman getPacman() {
@@ -44,22 +44,25 @@ public class World {
     Boss getBoss() {
     	return boss;
     }
-    Brick getBrick() {
-    	return brick;
-    }
+
     BrickRenderer getBrickRenderer() {
     	return brickRenderer;
     }
+    GameOver getGameOver() {
+    	return gameover;
+    }
     public void update(float delta) {
-        pacman.update();
-        boss.update();
-        brick.update();
+    	if (!gameover.getState()) {
+	        pacman.update();
+	        boss.update();
+	        brickRenderer.update();
+    	}
     }
     public int getScore() {
         return score;
     }
     public void increaseScore() {
-        score += 1;
+        score += 10;
     }
     private void registerDotEattenListener() {
         pacman.registerDotEattenListener(new Pacman.DotEattenListener() {
