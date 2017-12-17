@@ -18,7 +18,6 @@ public class WorldRenderer {
 	private BitmapFont font;
 	public static int count = 0;
 		
-	private Texture tower;
 
 	public WorldRenderer(PacmanGame pacmanGame, World world) {
 		
@@ -26,10 +25,9 @@ public class WorldRenderer {
 		batch = pacmanGame.batch;
 		this.world = world;
 		pacmanImg = new Texture("pacman.png");
-		mazeRenderer = new MazeRenderer(pacmanGame.batch, world.getMaze());
+		mazeRenderer = new MazeRenderer(pacmanGame.batch, world.getMaze(), world.getMap());
 		font = new BitmapFont();
 		playerImg = new Texture("player_idle.png");
-		tower = new Texture("tower.png");
 		
 	}
 	public void render(float delta) {
@@ -39,7 +37,7 @@ public class WorldRenderer {
         SpriteBatch batch = pacmanGame.batch;
         mazeRenderer.render();
         batch.begin();
-        batch.draw(tower, 160, 0);
+        
         Vector2 pos = world.getPacman().getPosition();
         batch.draw(pacmanImg, pos.x - BLOCK_SIZE/2, 
                 PacmanGame.HEIGHT - pos.y - BLOCK_SIZE/2);

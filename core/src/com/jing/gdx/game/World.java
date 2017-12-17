@@ -7,6 +7,7 @@ public class World {
     private int score;
     
     private Player player;
+    private Map map;
     
     World(PacmanGame pacmanGame) {
     	maze = new Maze();
@@ -14,8 +15,11 @@ public class World {
         this.pacmanGame = pacmanGame;
         score = 0;
         registerDotEattenListener();
-        player = new Player(170,170);
         
+        map = new Map();
+        player = new Player(map.getBlock()[0][0][0],map.getBlock()[0][0][1]);
+        System.out.println(map.getBlock()[0][0][0]);
+        System.out.println(map.getBlock()[0][0][1]);
     }
  
     Pacman getPacman() {
@@ -26,6 +30,9 @@ public class World {
     }
     Maze getMaze() {
         return maze;
+    }
+    Map getMap() {
+    	return map;
     }
     public void update(float delta) {
         pacman.update();
