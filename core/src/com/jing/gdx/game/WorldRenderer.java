@@ -42,7 +42,7 @@ public class WorldRenderer {
         batch.draw(pacmanImg, pos.x - BLOCK_SIZE/2, 
                 PacmanGame.HEIGHT - pos.y - BLOCK_SIZE/2);
         font.draw(batch, "" + world.getScore(), 700, 60);
-        batch.draw(playerImg, world.getPlayer().pos_x, world.getPlayer().pos_y);
+        batch.draw(playerImg, world.getPlayer().getX(), world.getPlayer().getY());
         batch.end();
         
        

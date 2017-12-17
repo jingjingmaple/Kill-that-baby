@@ -17,7 +17,7 @@ public class World {
         registerDotEattenListener();
         
         map = new Map();
-        player = new Player(map.getBlock()[0][0][0],map.getBlock()[0][0][1]);
+        player = new Player(0,1,this);
         System.out.println(map.getBlock()[0][0][0]);
         System.out.println(map.getBlock()[0][0][1]);
     }
