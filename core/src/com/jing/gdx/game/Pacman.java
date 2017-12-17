@@ -7,6 +7,7 @@ public class Pacman {
     private int currentDirection;
     private int nextDirection;
 	private Maze maze;
+	private World world;
     public static final int DIRECTION_UP = 3;
     public static final int DIRECTION_RIGHT = 2;
     public static final int DIRECTION_DOWN = 1;
@@ -22,11 +23,13 @@ public class Pacman {
         {-1,0}
     };
     
-    public Pacman(int x, int y, Maze maze) {
+    public Pacman(int x, int y,World world) {
         position = new Vector2(x,y);
         currentDirection = DIRECTION_STILL;
         nextDirection = DIRECTION_STILL;
-        this.maze = maze;
+        //this.maze = maze;
+        maze = world.getMaze();
+        this.world = world;
     }    
  
     public Vector2 getPosition() {
@@ -40,6 +43,7 @@ public class Pacman {
         nextDirection = dir;
     }
     private boolean canMoveInDirection(int dir) {
+    	Maze maze = world.getMaze();
     	int newRow = getRow() + DIR_OFFSETS[dir][1];
         int newCol = getColumn() + DIR_OFFSETS[dir][0];
         
@@ -63,11 +67,16 @@ public class Pacman {
                 ((((int)position.y - blockSize/2) % blockSize) == 0);
     }
     public void update() {
+    	Maze maze = world.getMaze();
     	if(isAtCenter()) {
             if(canMoveInDirection(nextDirection)) {
                 currentDirection = nextDirection;    
             } else {
                 currentDirection = DIRECTION_STILL;    
+            }
+            if (maze.hasDotAt(getRow(), getColumn())) {
+            	maze.removeDotAt(getRow(), getColumn());
+            	world.increaseScore();
             }
         }
         position.x += SPEED * DIR_OFFSETS[currentDirection][0];
