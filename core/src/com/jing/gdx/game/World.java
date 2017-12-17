@@ -6,16 +6,23 @@ public class World {
     private Maze maze;
     private int score;
     
+    private Player player;
+    
     World(PacmanGame pacmanGame) {
     	maze = new Maze();
         pacman = new Pacman(60,60,this);
         this.pacmanGame = pacmanGame;
         score = 0;
         registerDotEattenListener();
+        player = new Player(170,170);
+        
     }
  
     Pacman getPacman() {
         return pacman;
+    }
+    Player getPlayer() {
+    	return player;
     }
     Maze getMaze() {
         return maze;
