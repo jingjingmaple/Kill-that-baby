@@ -4,17 +4,26 @@ public class Brick {
 	public int pos_x;
 	public int pos_y;
 	private Player player;
+	private boolean active=true;
 	public Brick (int x, int y,World world) {
 		pos_x = x;
 		pos_y = y;
 		player = world.getPlayer();
 	}
 	public void update() {
-		pos_y -=3;
-		isKillPlayer();
-		/*System.out.print(pos_x);
-		System.out.print(",");
-		System.out.println(pos_y);*/
+		checkActive();
+		if (active) {
+			pos_y -=3;
+			isKillPlayer();
+			/*System.out.print(pos_x);
+			System.out.print(",");
+			System.out.println(pos_y);*/
+		}
+	}
+	private void checkActive() {
+		if (pos_y < -30) {
+			active = false;
+		}
 	}
 	public void isKillPlayer() {
 
