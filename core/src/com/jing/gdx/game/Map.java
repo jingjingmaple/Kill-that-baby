@@ -10,7 +10,7 @@ public class Map {
 	private int height;
     private int width;
     private Window window;
-	private Window[][] windowList = new Window [MAP.length][MAP[0].length()];
+	public Window[][] windowList = new Window [MAP.length][MAP[0].length()];
 	public int[][][] mapPos = new int [MAP.length][MAP[0].length()][2];
 	public Map() {
         height = MAP.length;
@@ -49,5 +49,12 @@ public class Map {
 	}
 	int[][][] getBlock() {
 		return mapPos;
+	}
+	public int getWidth() {
+		return width;
+		
+	}
+	public int getHeight() {
+		return height;
 	}
 }

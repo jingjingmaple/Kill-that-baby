@@ -7,7 +7,9 @@ public class World {
     private int score;
     
     private Player player;
+    private Boss boss;
     private Map map;
+    private Brick brick;
     
     World(PacmanGame pacmanGame) {
     	maze = new Maze();
@@ -18,6 +20,8 @@ public class World {
         
         map = new Map();
         player = new Player(0,1,this);
+        boss = new Boss(200,600,this);
+        brick = new Brick(200,600,this);
         System.out.println(map.getBlock()[0][0][0]);
         System.out.println(map.getBlock()[0][0][1]);
     }
@@ -34,8 +38,16 @@ public class World {
     Map getMap() {
     	return map;
     }
+    Boss getBoss() {
+    	return boss;
+    }
+    Brick getBrick() {
+    	return brick;
+    }
     public void update(float delta) {
         pacman.update();
+        boss.update();
+        brick.update();
     }
     public int getScore() {
         return score;

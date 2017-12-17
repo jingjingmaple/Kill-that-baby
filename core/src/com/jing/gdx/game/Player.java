@@ -10,11 +10,12 @@ public class Player {
 	private Map map;
 	public Player(int r, int c,World world) {
 		this.world = world;
+		this.map = world.getMap();
 		row = r;
 		col = c;
 	}
 	private int[] getPos() {
-		Map map = world.getMap();
+		
 		int[] realpos = map.getBlock()[row][col];
 		return realpos;
 	}
@@ -25,10 +26,19 @@ public class Player {
 		return getPos()[1];
 	}
 	
-	
+	public void fixThis() {
+		map.windowList[row][col].state = true;
+	}
 	public void SetPosition(int r, int c) {
-		row += r;
-		col += c;
+		System.out.print(col+c);
+		System.out.print(",");
+		System.out.println(row+r);
+		if (((row+r) < map.getHeight()) && ((row+r) >=0)) {
+			row += r;
+		}
+		if (((col+c) < map.getWidth()) && ((col+c) >=0)) {
+			col += c;
+		}
 	}
   
 }

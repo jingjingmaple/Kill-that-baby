@@ -21,7 +21,7 @@ public class GameScreen extends ScreenAdapter {
         pacmanImg = new Texture("pacman.png");
         world = new World(pacmanGame);
         worldRenderer = new WorldRenderer(pacmanGame, world);
-        keycontrol = new PlayerControl();
+        keycontrol = new PlayerControl(world);
     }
     @Override
     public void render(float delta) {
@@ -35,6 +35,7 @@ public class GameScreen extends ScreenAdapter {
     private void update(float delta) {
     	updatePacmanDirection();
         world.update(delta);
+        keycontrol.updateKey();
     }
     private void updatePacmanDirection() {
     	Pacman pacman = world.getPacman();
@@ -46,7 +47,6 @@ public class GameScreen extends ScreenAdapter {
         } else if(Gdx.input.isKeyPressed(Keys.LEFT)) {
             pacman.setNextDirection(Pacman.DIRECTION_LEFT);
         } else if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-        	player.SetPosition(0, 1);
             pacman.setNextDirection(Pacman.DIRECTION_RIGHT);
         } else {
         	pacman.setNextDirection(Pacman.DIRECTION_STILL);

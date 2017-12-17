@@ -12,6 +12,8 @@ public class WorldRenderer {
 	private PacmanGame pacmanGame;
 	private Texture pacmanImg;
 	private Texture playerImg;
+	private Texture bossImg;
+	private Texture brickImg;
 	World world;
 	SpriteBatch batch;
 	private MazeRenderer mazeRenderer;
@@ -28,6 +30,8 @@ public class WorldRenderer {
 		mazeRenderer = new MazeRenderer(pacmanGame.batch, world.getMaze(), world.getMap());
 		font = new BitmapFont();
 		playerImg = new Texture("player_idle.png");
+		bossImg = new Texture("boss_down.png");
+		brickImg = new Texture("brick.png");
 		
 	}
 	public void render(float delta) {
@@ -43,6 +47,8 @@ public class WorldRenderer {
                 PacmanGame.HEIGHT - pos.y - BLOCK_SIZE/2);
         font.draw(batch, "" + world.getScore(), 700, 60);
         batch.draw(playerImg, world.getPlayer().getX(), world.getPlayer().getY());
+        batch.draw(bossImg,world.getBoss().pos_x,world.getBoss().pos_y);
+        batch.draw(brickImg,world.getBrick().pos_x,world.getBrick().pos_y);
         batch.end();
         
        
