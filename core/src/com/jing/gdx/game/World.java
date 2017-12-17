@@ -21,7 +21,7 @@ public class World {
         registerDotEattenListener();
         
         map = new Map();
-        player = new Player(3,1,this);
+        player = new Player(3,1,pacmanGame.batch,this);
         boss = new Boss(200,650,this);
 
         
