@@ -1,7 +1,6 @@
 package com.jing.gdx.game;
 
 public class World {
-    private Pacman pacman;
     private PacmanGame pacmanGame;
     private Maze maze;
     private int score;
@@ -15,23 +14,19 @@ public class World {
     
     World(PacmanGame pacmanGame) {
     	maze = new Maze();
-        pacman = new Pacman(60,60,this);
         this.pacmanGame = pacmanGame;
         score = 0;
-        registerDotEattenListener();
         
         map = new Map();
         player = new Player(3,1,pacmanGame.batch,this);
-        boss = new Boss(200,650,this);
+        boss = new Boss(200,650,pacmanGame.batch,this);
 
         
         brickRenderer = new BrickRenderer(pacmanGame.batch,this);
         gamestate = new GameState(pacmanGame.batch);
     }
  
-    Pacman getPacman() {
-        return pacman;
-    }
+
     Player getPlayer() {
     	return player;
     }
@@ -53,7 +48,6 @@ public class World {
     }
     public void update(float delta) {
     	if (gamestate.getState() == "RUN") {
-	        pacman.update();
 	        boss.update();
 	        brickRenderer.update();
 	        player.update();
@@ -72,12 +66,5 @@ public class World {
     		gamestate.win();
     	}
     }
-    private void registerDotEattenListener() {
-        pacman.registerDotEattenListener(new Pacman.DotEattenListener() {
-            @Override
-            public void notifyDotEatten() {
-                score += 1;
-            }
-        });
-    }
+  
 }

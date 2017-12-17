@@ -10,7 +10,6 @@ import com.badlogic.gdx.math.Vector2;
 public class WorldRenderer {
 	public static final int BLOCK_SIZE = 100;
 	private PacmanGame pacmanGame;
-	private Texture pacmanImg;
 	private Texture playerImg;
 	private Texture bossImg;
 	private Texture brickImg;
@@ -27,7 +26,6 @@ public class WorldRenderer {
 		this.pacmanGame = pacmanGame;
 		batch = pacmanGame.batch;
 		this.world = world;
-		pacmanImg = new Texture("pacman.png");
 		mazeRenderer = new MazeRenderer(pacmanGame.batch, world.getMaze(), world.getMap());
 		
 		font = new BitmapFont();
@@ -45,15 +43,11 @@ public class WorldRenderer {
         
         batch.begin();
         
-        Vector2 pos = world.getPacman().getPosition();
-        batch.draw(pacmanImg, pos.x - BLOCK_SIZE/2, 
-                PacmanGame.HEIGHT - pos.y - BLOCK_SIZE/2);
         font.draw(batch, "" + world.getScore(), 700, 60);
-        //batch.draw(playerImg, world.getPlayer().getX(), world.getPlayer().getY());
-        //batch.draw(playerImg, world.getPlayer().pos_x, world.getPlayer().pos_y);
-        batch.draw(bossImg,world.getBoss().pos_x,world.getBoss().pos_y);
+       
         batch.end();
         world.getPlayer().render();
+        world.getBoss().render();
         world.getBrickRenderer().render();
         world.getGameState().render();
        
