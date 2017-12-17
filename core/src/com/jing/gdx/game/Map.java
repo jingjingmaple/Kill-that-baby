@@ -40,9 +40,7 @@ public class Map {
 	            mapPos[r][c][1] = y;
             }
         }
-        System.out.println("Fuck");
-        System.out.println(mapPos[0][0][0]);
-        System.out.println(mapPos[0][0][1]);
+
     }
 	Window[][] getWindow() {
 		return windowList;

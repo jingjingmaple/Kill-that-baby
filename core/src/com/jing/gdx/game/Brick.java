@@ -11,11 +11,14 @@ public class Brick {
 	}
 	public void update() {
 		pos_y -=3;
-		
+		isKillPlayer();
+		/*System.out.print(pos_x);
+		System.out.print(",");
+		System.out.println(pos_y);*/
 	}
 	public void isKillPlayer() {
 
-		if (pos_x <= player.getX() && pos_x >= player.getX()+100 && pos_y <= player.getY()) {
+		if ((pos_x >= player.getX() && pos_x <= player.getX()+100) && pos_y-30 <= player.getY()) {
 			System.out.println("Fuck");
 		}
 	}

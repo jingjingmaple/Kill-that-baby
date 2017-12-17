@@ -17,6 +17,7 @@ public class WorldRenderer {
 	World world;
 	SpriteBatch batch;
 	private MazeRenderer mazeRenderer;
+	
 	private BitmapFont font;
 	public static int count = 0;
 		
@@ -28,6 +29,7 @@ public class WorldRenderer {
 		this.world = world;
 		pacmanImg = new Texture("pacman.png");
 		mazeRenderer = new MazeRenderer(pacmanGame.batch, world.getMaze(), world.getMap());
+		
 		font = new BitmapFont();
 		playerImg = new Texture("player_idle.png");
 		bossImg = new Texture("boss_down.png");
@@ -40,6 +42,7 @@ public class WorldRenderer {
         
         SpriteBatch batch = pacmanGame.batch;
         mazeRenderer.render();
+        
         batch.begin();
         
         Vector2 pos = world.getPacman().getPosition();
@@ -50,7 +53,7 @@ public class WorldRenderer {
         batch.draw(bossImg,world.getBoss().pos_x,world.getBoss().pos_y);
         batch.draw(brickImg,world.getBrick().pos_x,world.getBrick().pos_y);
         batch.end();
-        
+        world.getBrickRenderer().render();
        
         count++;
     }
