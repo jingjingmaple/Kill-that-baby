@@ -30,7 +30,7 @@ public class Brick {
 	public void isKillPlayer() {
 
 		if ((pos_x >= player.getX() && pos_x <= player.getX()+100) && (pos_y-60 <= player.getY() && pos_y+30>= player.getY() )) {
-			world.getGameOver().start();
+			world.getGameState().over();;
 		}
 	}
 }

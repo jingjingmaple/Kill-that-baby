@@ -10,6 +10,7 @@ public class Map {
 	private int height;
     private int width;
     private Window window;
+    private int totalBroke = 0;
 	public Window[][] windowList = new Window [MAP.length][MAP[0].length()];
 	public int[][][] mapPos = new int [MAP.length][MAP[0].length()][2];
 	public Map() {
@@ -35,6 +36,7 @@ public class Map {
 	            } else {
 	            	window = new Window(x, y, false);
 	                windowList[r][c] = window;
+	                totalBroke +=1;
 	            }
 	            mapPos[r][c][0] = x;
 	            mapPos[r][c][1] = y;
@@ -54,5 +56,8 @@ public class Map {
 	}
 	public int getHeight() {
 		return height;
+	}
+	public int getTotalBroke() {
+		return totalBroke;
 	}
 }

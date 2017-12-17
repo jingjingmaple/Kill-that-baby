@@ -17,7 +17,7 @@ public class BrickRenderer {
 		brickImg = new Texture("brick.png");
 	}
 	public void addBrick(int x, int y) {
-		bricklist.add(new Brick(x,y, world));
+		bricklist.add(new Brick(x+31,y, world));
 	}
 	public void update() {
 		for (int n=0; n<bricklist.size(); n++) {

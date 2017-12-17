@@ -6,6 +6,8 @@ public class Player {
 
 	private int row;
 	private int col;
+	public int pos_x;
+	public int pos_y;
 	private World world;
 	private Map map;
 	public Player(int r, int c,World world) {
@@ -29,6 +31,15 @@ public class Player {
 	public void fixThis() {
 		if (map.windowList[row][col].FixWindow()) {
 			world.increaseScore();
+		}
+	}
+	public void update() {
+		if (map.getBlock()[row][col][0] != pos_x) {
+			if (map.getBlock()[row][col][0] < pos_x) {
+				pos_x -=10;
+			} else {
+				pos_x +=10;
+			}
 		}
 	}
 	public void SetPosition(int r, int c) {

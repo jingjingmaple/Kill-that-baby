@@ -53,7 +53,7 @@ public class WorldRenderer {
         batch.draw(bossImg,world.getBoss().pos_x,world.getBoss().pos_y);
         batch.end();
         world.getBrickRenderer().render();
-        world.getGameOver().render();
+        world.getGameState().render();
        
         count++;
     }
