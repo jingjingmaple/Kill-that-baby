@@ -99,6 +99,7 @@ public class Boss {
 	private void releaseBrick() {
 
 		world.getBrickRenderer().addBrick(pos_x, pos_y);
+		
 		isReleaseBrick = false;
 		if (rand()) {
 			direction = "LEFT";

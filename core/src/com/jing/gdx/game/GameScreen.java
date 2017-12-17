@@ -34,7 +34,14 @@ public class GameScreen extends ScreenAdapter {
     }
     private void update(float delta) {
         world.update(delta);
-        keycontrol.updateKey();
+        if (world.getGameState().getState() == "RUN") {
+        	keycontrol.updateKey();
+        }
+        if(Gdx.input.isKeyPressed(Keys.R)) {
+        	world = new World(pacmanGame);
+        	worldRenderer = new WorldRenderer(pacmanGame, world);
+        	keycontrol = new PlayerControl(world);
+        } 
     }
    
     
